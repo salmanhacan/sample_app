@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/routes.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String name = "";
+  bool is_login = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +24,7 @@ class Login extends StatelessWidget {
             height: 20.0,
           ),
           Text(
-            "Login Page",
+            "Welcome $name",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           Padding(
@@ -28,6 +36,10 @@ class Login extends StatelessWidget {
                     labelText: "Username",
                     hintText: "Enter Username",
                   ),
+                  onChanged: (value) {
+                    name = value;
+                    setState(() {});
+                  },
                 ),
                 TextFormField(
                   obscureText: true,
@@ -39,12 +51,37 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 40,
                 ),
-                ElevatedButton(
-                    style: TextButton.styleFrom(minimumSize: Size(120, 45)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, MyRoutes.homeRoutes);
-                    },
-                    child: Text("Login"))
+                InkWell(
+                  onTap: () async {
+                    setState(() {
+                      is_login = true;
+                    });
+                    await Future.delayed(
+                      Duration(seconds: 1),
+                    );
+                    Navigator.pushNamed(context, MyRoutes.homeRoutes);
+                  },
+                  child: AnimatedContainer(
+                    height: 50,
+                    width: is_login ? 50 : 120,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                      borderRadius: BorderRadius.circular(is_login ? 50 : 5),
+                    ),
+                    duration: Duration(milliseconds: 700),
+                    child: is_login
+                        ? Icon(
+                            Icons.done,
+                            color: Colors.white,
+                          )
+                        : Text("Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            )),
+                  ),
+                )
               ],
             ),
           )
