@@ -22,7 +22,6 @@ class _LoginState extends State<Login> {
       Navigator.pushNamed(context, MyRoutes.homeRoutes);
       setState(() {
         is_login = false;
-        _formKey.currentState?.reset();
       });
     }
   }

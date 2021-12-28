@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/widgets/drawer.dart';
 
 class Home extends StatelessWidget {
-  final String home = "Home Title";
+  final String home = "Catalog App";
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class Home extends StatelessWidget {
       body: Center(
         child: Text("This is sample $home"),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
