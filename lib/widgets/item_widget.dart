@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:sample_app/models/catalog.dart';
 
@@ -18,7 +16,7 @@ class ItemWidget extends StatelessWidget {
         subtitle: Text(item.desc),
         trailing: Text("\$${item.price}"),
         onTap: () {
-          "item Pressed";
+          print("ID: ${item.id} : ${item.name}");
         },
       ),
     );

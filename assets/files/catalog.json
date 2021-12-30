@@ -1,0 +1,29 @@
+{
+    "products" : [
+        {
+            "id": 1,
+            "name": "Iphone 13 Pro Max",
+            "desc": "Iphone 13th generation",
+            "price": 1299,
+            "color": "#fa91ac",
+            "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=470&hei=556&fmt=jpeg"
+        },
+        {
+            "id": 2,
+            "name": "Iphone XS Max",
+            "desc": "Iphone 10th Generation",
+            "price": 999,
+            "color": "#fa91ac",
+            "url": "https://m.media-amazon.com/images/I/618cA+Uah5L._AC_SX522_.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Iphone 12",
+            "desc": "Iphone 12th generation",
+            "price": 999,
+            "color": "#fa91ac",
+            "url": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-blue-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343704000"
+        }
+
+    ]
+}
