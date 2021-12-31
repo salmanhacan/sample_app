@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sample_app/models/catalog.dart';
@@ -38,11 +39,48 @@ class _HomeState extends State<Home> {
         title: Text("$home"),
       ),
       body: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-          ? ListView.builder(
+          ? GridView.builder(
               itemCount: CatalogModel.items.length,
-              itemBuilder: (context, index) => ItemWidget(
-                item: CatalogModel.items[index],
-              ),
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              itemBuilder: (context, index) {
+                final item = CatalogModel.items[index];
+                return Card(
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: GridTile(
+                    header: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        item.name,
+                        textScaleFactor: 1.2,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                      ),
+                    ),
+                    child: Image.network(item.url),
+                    footer: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Price: \$${item.price}",
+                        textScaleFactor: 1.2,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                );
+              },
             )
           : Center(
               child: CircularProgressIndicator(),
